@@ -1,0 +1,8 @@
+{
+  "name": "drexel-rmp",
+  "private": true,
+  "scripts": {
+    "test": "pnpm -r test",
+    "build": "pnpm -r build"
+  }
+}
