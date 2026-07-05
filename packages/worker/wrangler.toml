@@ -1,0 +1,7 @@
+name = "drexel-rmp-worker"
+main = "src/index.ts"
+compatibility_date = "2025-01-01"
+
+[[kv_namespaces]]
+binding = "RMP_CACHE"
+id = "00000000000000000000000000000000"
