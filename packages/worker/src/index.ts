@@ -15,18 +15,29 @@ app.get("/prof", async (c) => {
   if (!name) return c.json({ error: "name required" }, 400);
 
   const key = `prof:${name}`;
-  const cached = await c.env.RMP_CACHE.get(key, "json");
+  let cached: unknown = null;
+  try {
+    cached = await c.env.RMP_CACHE.get(key, "json");
+  } catch {
+    // KV read failure degrades to a cache miss — never a user-facing error
+  }
   if (cached) return c.json(cached);
 
+  let result: Awaited<ReturnType<typeof lookupProfessorViaRmp>>;
   try {
-    const result = await lookupProfessorViaRmp(name);
-    await c.env.RMP_CACHE.put(key, JSON.stringify(result), {
-      expirationTtl: result.status === "found" ? POSITIVE_TTL_SECONDS : NEGATIVE_TTL_SECONDS,
-    });
-    return c.json(result);
+    result = await lookupProfessorViaRmp(name);
   } catch {
     return c.json({ error: "rmp_unavailable" }, 502);
   }
+
+  try {
+    await c.env.RMP_CACHE.put(key, JSON.stringify(result), {
+      expirationTtl: result.status === "found" ? POSITIVE_TTL_SECONDS : NEGATIVE_TTL_SECONDS,
+    });
+  } catch {
+    // cache-write failure must not block serving a successful lookup
+  }
+  return c.json(result);
 });
 
 export default app;

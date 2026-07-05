@@ -41,12 +41,23 @@ describe("GET /prof", () => {
     const res = await app.fetch(req("Cached Prof"), env);
     expect(res.status).toBe(200);
     expect(await res.json()).toEqual({ status: "not_found" });
-    // no mockRmp registered — assertNoPendingInterceptors would fail if RMP were called
+    // no interceptor registered — disableNetConnect() makes any RMP call throw, which would 502 this request
   });
 
   it("502s when RMP is down on a cache miss", async () => {
     mockRmp({ error: "down" }, 503);
     const res = await app.fetch(req("Someone New"), env);
     expect(res.status).toBe(502);
+  });
+
+  it("serves the lookup even when KV is completely broken", async () => {
+    mockRmp(fixture);
+    const brokenKv = {
+      get: async () => { throw new Error("kv down"); },
+      put: async () => { throw new Error("kv down"); },
+    } as unknown as KVNamespace;
+    const res = await app.fetch(req("Jeffrey Popyack"), { RMP_CACHE: brokenKv });
+    expect(res.status).toBe(200);
+    expect(((await res.json()) as any).status).toBe("found");
   });
 });
