@@ -7,6 +7,7 @@
     "skipLibCheck": true,
     "isolatedModules": true,
     "forceConsistentCasingInFileNames": true,
-    "noUncheckedIndexedAccess": true
+    "noUncheckedIndexedAccess": true,
+    "resolveJsonModule": true
   }
 }

@@ -1,0 +1,23 @@
+{
+  "data": {
+    "newSearch": {
+      "teachers": {
+        "edges": [
+          {
+            "node": {
+              "avgDifficulty": 3.6,
+              "avgRating": 2.3,
+              "department": "Computer Science",
+              "firstName": "Jeffrey",
+              "id": "VGVhY2hlci01NjU5Mzc=",
+              "lastName": "Popyack",
+              "legacyId": 565937,
+              "numRatings": 28,
+              "wouldTakeAgainPercent": 42.8571
+            }
+          }
+        ]
+      }
+    }
+  }
+}
