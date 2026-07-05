@@ -37,10 +37,16 @@ describe("pickBestMatch", () => {
     expect(pickBestMatch("John Smith", [teacher("John", "Smythe-Kowalski")])).toBeNull();
   });
 
-  it("rejects when two candidates are ambiguously close", () => {
+  it("rejects when no candidate clears the confidence threshold", () => {
     const a = teacher("John", "Smith");
     const b = teacher("Jon", "Smith");
     expect(pickBestMatch("J Smith", [a, b])).toBeNull();
+  });
+
+  it("rejects when two candidates both clear the threshold and are too close", () => {
+    const a = teacher("John", "Smith");
+    const b = teacher("John", "Smith"); // same-named professors exist in real departments
+    expect(pickBestMatch("John Smith", [a, b])).toBeNull();
   });
 
   it("picks the clearly better of two candidates", () => {
