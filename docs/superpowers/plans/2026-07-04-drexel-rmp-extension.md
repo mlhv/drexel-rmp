@@ -19,7 +19,7 @@
 - Worker timeout in extension: 3000 ms (`AbortSignal.timeout(3000)`).
 - Match acceptance: score ≥ 0.8; ambiguity guard: reject if runner-up is within 0.05 and also ≥ 0.8. Never show a low-confidence match.
 - Failures on the host page must be silent: no thrown errors escaping content scripts, no layout breakage.
-- Every commit message ends with `Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>`.
+- Commit messages have no `Co-Authored-By` trailer.
 - Run tests with `pnpm -F <pkg> test` (vitest run mode, never watch mode).
 
 ---
