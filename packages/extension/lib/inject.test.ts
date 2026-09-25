@@ -37,14 +37,28 @@ describe("runSite", () => {
     expect(badgeTexts(cell)).toEqual(["★ 4.2"]);
   });
 
-  it("Banner: places the badge after the mailto link, not inside it", async () => {
+  it("Banner: places the badge before the mailto link, not inside it", async () => {
+    // Banner's instructor cell is ~86px, white-space: nowrap, overflow hidden + ellipsis:
+    // anything after the name is clipped, so the badge must lead the line.
     document.body.innerHTML = fixture("banner.html");
-    stop = runSite(BANNER_CONFIG, async (name) => found(name, 3.5));
+    stop = runSite(BANNER_CONFIG, async (name) => found(name, 4.4));
     await settle();
     const link = document.querySelector("a.email")!;
     expect(link.querySelector(".rmp-badge-host")).toBeNull();
-    expect(badgeTexts(link.parentElement!)).toEqual(["★ 3.5"]);
-    expect(link.nextElementSibling!.contains(link.parentElement!.querySelector(".rmp-badge-host"))).toBe(true);
+    const slot = link.previousElementSibling!;
+    expect(slot.className).toBe("rmp-slot");
+    expect(badgeTexts(slot)).toEqual(["★ 4.4"]);
+    expect(slot.lastChild!.textContent).toBe(" "); // gap between badge and name
+  });
+
+  it("TMS: puts a space before the appended badge so it can wrap in narrow cells", async () => {
+    document.body.innerHTML = fixture("tms.html");
+    stop = runSite(TMS_CONFIG, async (name) => found(name, 4.2));
+    await settle();
+    const slot = document.querySelector(".rmp-slot")!;
+    expect(slot.firstChild!.nodeType).toBe(Node.TEXT_NODE);
+    expect(slot.firstChild!.textContent).toBe(" ");
+    expect(slot.lastElementChild!.className).toBe("rmp-badge-host");
   });
 
   it("keeps badges in name order even when lookups finish out of order", async () => {

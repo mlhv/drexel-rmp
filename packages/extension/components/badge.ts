@@ -4,7 +4,7 @@ import { attachTooltip } from "./tooltip";
 const STYLES = `
   :host { all: initial; }
   .badge {
-    display: inline-block; margin-left: 6px; padding: 1px 6px;
+    display: inline-block; padding: 1px 6px;
     border-radius: 9px; font: 600 11px/1.5 system-ui, sans-serif;
     cursor: pointer; vertical-align: middle; white-space: nowrap;
   }

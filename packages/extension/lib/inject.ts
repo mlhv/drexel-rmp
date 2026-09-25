@@ -17,27 +17,28 @@ const lookupViaBackground: LookupFn = async (name) =>
  * no matter which lookup finishes first.
  */
 export function runSite(config: SiteConfig, lookup: LookupFn = lookupViaBackground): () => void {
+  const before = config.badgePlacement === "before";
   return startScanner(config, (el, rawText) => {
-    let previous: Element = el;
     for (const name of parseInstructorCell(rawText, config.nameSeparator)) {
       const slot = document.createElement("span");
       slot.className = "rmp-slot";
-      if (config.badgePlacement === "append") {
-        el.appendChild(slot);
-      } else {
-        previous.after(slot);
-        previous = slot;
-      }
-      void fillSlot(slot, name, lookup);
+      // el.before() repeatedly still yields name order: each slot lands after the previous one.
+      if (before) el.before(slot);
+      else el.appendChild(slot);
+      void fillSlot(slot, name, lookup, before);
     }
   });
 }
 
-async function fillSlot(slot: HTMLElement, name: string, lookup: LookupFn): Promise<void> {
+async function fillSlot(slot: HTMLElement, name: string, lookup: LookupFn, before: boolean): Promise<void> {
   try {
     const result = await lookup(name);
     if (result && slot.isConnected) {
-      slot.appendChild(createBadge(result, name));
+      const badge = createBadge(result, name);
+      // The space separates badge from name; when appended it is also a line-break
+      // opportunity, so the badge wraps in narrow cells instead of being clipped.
+      if (before) slot.append(badge, " ");
+      else slot.append(" ", badge);
       return;
     }
   } catch {

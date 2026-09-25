@@ -5,10 +5,11 @@ export interface SiteConfig {
   /** Selector for the element whose text is the instructor name(s). */
   instructorSelector: string;
   /**
-   * Where the badge goes relative to that element: "append" inside it, or "after" it
-   * (needed when the element is itself a link, so badge clicks don't trigger it).
+   * Where the badge goes relative to that element: "append" inside it, or "before" it
+   * (needed when the element is itself a link, so badge clicks don't trigger it, and when
+   * the cell clips anything after the name).
    */
-  badgePlacement: "append" | "after";
+  badgePlacement: "append" | "before";
   /** How multiple instructors are joined within one element's text. */
   nameSeparator: string | RegExp;
 }
@@ -30,11 +31,13 @@ export const TMS_CONFIG: SiteConfig = {
  * Banner 9 class search / registration (fixtures/banner.html). Each instructor is its own
  * mailto link inside td[data-property="instructor"]; "(Primary)" sits outside the link, and
  * multiple instructors are separated by <br>, so targeting links yields one clean name each.
+ * The cell is ~86px, white-space: nowrap, overflow hidden + ellipsis, so anything placed after
+ * the name is clipped: the badge leads the line instead.
  */
 export const BANNER_CONFIG: SiteConfig = {
   id: "banner",
   matches: ["https://banner.drexel.edu/registration/ssb/*"],
   instructorSelector: 'td[data-property="instructor"] a.email',
-  badgePlacement: "after",
+  badgePlacement: "before",
   nameSeparator: ";", // one name per link; kept for safety only
 };
