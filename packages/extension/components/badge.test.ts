@@ -52,6 +52,7 @@ describe("createBadge", () => {
     const link = host.shadowRoot!.querySelector("a")!;
     expect(link.href).toContain("/search/professors/1521");
     expect(link.href).toContain("q=Jeffrey");
+    expect(badge.title).toContain("Jeffrey Popyack"); // tells multi-instructor n/a badges apart
   });
 });
 

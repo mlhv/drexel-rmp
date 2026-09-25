@@ -55,7 +55,7 @@ export function createBadge(result: LookupResult, queriedName: string): HTMLElem
   } else {
     badge.className = "badge none";
     badge.textContent = "n/a";
-    badge.title = "No confident Rate My Professors match";
+    badge.title = `No confident Rate My Professors match for ${queriedName}`;
     const search = new URL(`https://www.ratemyprofessors.com/search/professors/${DREXEL_LEGACY_SCHOOL_ID}`);
     search.searchParams.set("q", queriedName);
     link.href = search.toString();
