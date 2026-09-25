@@ -64,3 +64,9 @@ The callback runs inside `try/catch`, and a test makes it throw on every element
 - **TMS multi-instructor format is unknown.** If TMS joins names with a comma, the normalizer would read it as "Last, First" and produce nonsense. The matcher would then reject it (showing n/a, not a wrong rating). Check it during Task 13's manual test.
 - **Middle names:** both sites use First-Last order, so a full middle name ("Mary Anne Smith") becomes part of the last name and fails to match RMP's "Mary Smith". The fix belongs in the shared matcher, and would need a Worker redeploy.
 - **Nicknames:** "Drew" vs the email's "andrew". This case still passes the matcher (~0.87), but the email is a possible extra signal later.
+
+### Update: the TMS multi-instructor format (resolved)
+
+A real cell showed TMS joins instructors with commas: `Tammy R Pirmann, Matthew J Burlick`. The normalizer treats a comma as "Last, First", so this became **"Matthew Tammy Pirmann"**, one made-up person. The fix is about *order of operations*: split into names **first** (on the site's separator), then normalize each piece. Since the separator is a property of the site, not of names in general, it lives in `SiteConfig.nameSeparator` (`","` for TMS, `";"` for Banner), and `parseInstructorCell(text, separator)` takes it as a parameter, defaulting to `";"` so earlier callers and tests are unchanged.
+
+Takeaway: the same character can mean different things in different sources, and a comma is the classic case (CSV, "Last, First", lists). Put knowledge that belongs to one source in that source's config, not in shared code.
