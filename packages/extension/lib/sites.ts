@@ -9,6 +9,8 @@ export interface SiteConfig {
    * (needed when the element is itself a link, so badge clicks don't trigger it).
    */
   badgePlacement: "append" | "after";
+  /** How multiple instructors are joined within one element's text. */
+  nameSeparator: string | RegExp;
 }
 
 /**
@@ -21,6 +23,7 @@ export const TMS_CONFIG: SiteConfig = {
   matches: ["https://termmasterschedule.drexel.edu/webtms_du/*"],
   instructorSelector: "tr.odd > td:last-child, tr.even > td:last-child",
   badgePlacement: "append",
+  nameSeparator: ",", // "Tammy R Pirmann, Matthew J Burlick" — names are First-Last, never "Last, First"
 };
 
 /**
@@ -33,4 +36,5 @@ export const BANNER_CONFIG: SiteConfig = {
   matches: ["https://banner.drexel.edu/registration/ssb/*"],
   instructorSelector: 'td[data-property="instructor"] a.email',
   badgePlacement: "after",
+  nameSeparator: ";", // one name per link; kept for safety only
 };

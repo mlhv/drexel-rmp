@@ -36,9 +36,12 @@ describe("startScanner", () => {
     expect(els[0]!.tagName).toBe("A");
   });
 
-  it("fixture names normalize to lookup names", () => {
-    expect(parseInstructorCell("Daniel W Moix")).toEqual(["Daniel Moix"]);
-    expect(parseInstructorCell("Drew Parkinson")).toEqual(["Drew Parkinson"]);
+  it("fixture names normalize to lookup names with each site's separator", () => {
+    expect(parseInstructorCell("Daniel W Moix", TMS_CONFIG.nameSeparator)).toEqual(["Daniel Moix"]);
+    expect(parseInstructorCell("Drew Parkinson", BANNER_CONFIG.nameSeparator)).toEqual(["Drew Parkinson"]);
+    // Real TMS multi-instructor cell, captured 2026-09-24
+    expect(parseInstructorCell("Tammy R Pirmann, Matthew J Burlick", TMS_CONFIG.nameSeparator))
+      .toEqual(["Tammy Pirmann", "Matthew Burlick"]);
   });
 
   it("never fires twice for the same element", async () => {

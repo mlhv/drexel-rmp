@@ -40,4 +40,11 @@ describe("parseInstructorCell", () => {
   it("returns [] for empty/junk cells", () => {
     expect(parseInstructorCell("  ")).toEqual([]);
   });
+  it("splits on a site-specific separator (TMS joins First-Last names with commas)", () => {
+    // Real TMS cell, captured 2026-09-24
+    expect(parseInstructorCell("Tammy R Pirmann, Matthew J Burlick", /,/)).toEqual([
+      "Tammy Pirmann",
+      "Matthew Burlick",
+    ]);
+  });
 });

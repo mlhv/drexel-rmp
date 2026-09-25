@@ -39,10 +39,13 @@ export function normalizeInstructorName(raw: string): string | null {
   return `${first} ${last}`;
 }
 
-/** Split a multi-instructor cell ("A; B"), normalize each, drop non-names, dedupe. */
-export function parseInstructorCell(text: string): string[] {
+/**
+ * Split a multi-instructor cell on `separator` (e.g. "A; B"), normalize each, drop non-names, dedupe.
+ * Split happens before normalizing, so a comma separator means each piece is read as "First Last".
+ */
+export function parseInstructorCell(text: string, separator: string | RegExp = ";"): string[] {
   const names = text
-    .split(";")
+    .split(separator)
     .map(normalizeInstructorName)
     .filter((n): n is string => n !== null);
   return [...new Set(names)];
