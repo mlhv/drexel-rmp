@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Policy · DU ProfessorView</title>
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <p><a href="./">← DU ProfessorView</a></p>
+  <h1>Privacy Policy</h1>
+  <p class="tagline">Effective September 26, 2026</p>
+
+  <p>DU ProfessorView is a Chrome extension that shows Rate My Professors ratings
+  next to instructor names on Drexel University course pages. This policy describes
+  exactly what data it handles.</p>
+
+  <h2>What the extension sends</h2>
+  <p>Only <strong>instructor names</strong> found on the Drexel Term Master Schedule
+  and Banner registration pages you visit. To look up ratings, those names are sent to:</p>
+  <ul>
+    <li>the extension's own rating cache service, hosted on Cloudflare Workers
+      (<code>drexel-rmp-worker.mlhv.workers.dev</code>), and</li>
+    <li>ratemyprofessors.com, when the cache service is unavailable or has no entry.</li>
+  </ul>
+
+  <h2>What the extension does not collect</h2>
+  <ul>
+    <li>Your Drexel username, password, or any login information</li>
+    <li>Your name, email, student ID, or any other identity information</li>
+    <li>Your courses, schedule, grades, or registration activity</li>
+    <li>Your browsing history or activity on any other website</li>
+  </ul>
+  <p>There are no analytics, no advertising, and no tracking. No data is sold or
+  shared with anyone for any other purpose.</p>
+
+  <h2>What is stored</h2>
+  <ul>
+    <li><strong>On your device:</strong> rating results are saved in your browser's
+      extension storage so repeat lookups are fast. They are refreshed after about
+      24 hours; older copies are kept only as a fallback for when a lookup fails.
+      Removing the extension deletes all of them.</li>
+    <li><strong>In the cache service:</strong> instructor name → rating results are
+      stored for 1–7 days. These records contain no information about you.
+      Cloudflare's standard infrastructure request logging applies to the service
+      (see Cloudflare's privacy policy).</li>
+  </ul>
+
+  <h2>Changes</h2>
+  <p>If the extension ever handles new data, this page will be updated before that
+  version is released, and the effective date above will change.</p>
+
+  <h2>Contact</h2>
+  <p>Questions: <a href="https://github.com/mlhv/drexel-rmp/issues">GitHub Issues</a>.</p>
+
+  <footer>Not affiliated with or endorsed by Drexel University or Rate My Professors.</footer>
+</main>
+</body>
+</html>

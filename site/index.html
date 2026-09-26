@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DU ProfessorView</title>
+  <meta name="description" content="Professor ratings on Drexel's course pages (unofficial Chrome extension).">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <header>
+    <img src="icon.svg" alt="">
+    <div>
+      <h1>DU ProfessorView</h1>
+      <div class="tagline">Professor ratings on Drexel course pages (unofficial)</div>
+    </div>
+  </header>
+
+  <p>A Chrome extension that shows Rate My Professors ratings next to instructor
+  names on Drexel's Term Master Schedule and Banner class registration pages.
+  Hover a badge for difficulty, would-take-again percentage, and the number of ratings.</p>
+
+  <a class="cta" href="https://github.com/mlhv/drexel-rmp">Add to Chrome</a>
+
+  <div class="sample" aria-label="Example of a course row with a rating badge">
+    <table>
+      <tr><td>CS 164</td><td>Introduction to Computer Science</td><td>Smith, Jane<span class="badge">★ 4.3</span></td></tr>
+    </table>
+  </div>
+
+  <h2>How it works</h2>
+  <p>The extension reads instructor names on the Drexel pages you open and looks up
+  their public ratings. It never sees your Drexel password, your schedule, or anything
+  else on the page. Details are in the <a href="privacy.html">privacy policy</a>.</p>
+
+  <h2>Source</h2>
+  <p>Open source on <a href="https://github.com/mlhv/drexel-rmp">GitHub</a>.
+  Bug reports and questions: <a href="https://github.com/mlhv/drexel-rmp/issues">GitHub Issues</a>.</p>
+
+  <footer>Not affiliated with or endorsed by Drexel University or Rate My Professors.</footer>
+</main>
+</body>
+</html>
