@@ -31,3 +31,4 @@ chrome://extensions → Developer mode → Load unpacked →
 
 See `docs/testing-checklist.md`. Worker deploy: `packages/worker/README.md`.
 Learning notes for each build step: `docs/learning/`.
+Chrome Web Store submission: `docs/store/runbook.md` (listing copy in `docs/store/listing.md`).

@@ -4,6 +4,9 @@ Setup: `pnpm -F @drexel-rmp/extension build`, then chrome://extensions →
 Developer mode → Load unpacked → `packages/extension/.output/chrome-mv3`.
 After a rebuild, click the reload icon on the extension card and refresh the Drexel tab.
 
+Run this list twice per release: on the unpacked production build before tagging,
+and on the store install after approval.
+
 Debugging: chrome://extensions → the extension's "service worker" link opens the
 background console (Network tab shows Worker/RMP requests).
 
@@ -24,3 +27,4 @@ background console (Network tab shows Worker/RMP requests).
 - [ ] Kill switch drill: `WXT_WORKER_URL=https://nonexistent.invalid pnpm -F @drexel-rmp/extension build`,
       reload the extension → badges still appear (direct RMP fallback). Rebuild normally after.
 - [ ] No layout breakage or console errors injected into either Drexel page
+- [ ] Store install only: extension ID matches the dev build's ID (chrome://extensions)
