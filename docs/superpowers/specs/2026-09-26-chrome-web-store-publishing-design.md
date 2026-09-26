@@ -38,13 +38,14 @@ Ship the finished extension to the Chrome Web Store as **DU ProfessorView**, fir
 | | Production (`wxt build`, `wxt zip`) | Development (`wxt`) |
 |---|---|---|
 | `permissions` | `["storage"]` | `["storage"]` |
-| `host_permissions` | `https://*.drexel.edu/*`, `https://www.ratemyprofessors.com/*`, `https://drexel-rmp-worker.mlhv.workers.dev/*` | production list + `http://localhost:8787/*` |
+| `host_permissions` | `https://www.ratemyprofessors.com/*`, `https://drexel-rmp-worker.mlhv.workers.dev/*` | production list + `http://localhost:8787/*` |
 | `key` | absent | the store item's public key |
 
 - The `key` is **dev-only** because the Web Store rejects uploaded manifests containing `key`. The store assigns the ID derived from that same key, so unpacked dev builds and the store build share one extension ID.
 - The public key is obtained during the runbook bootstrap (Section 5). Until then the dev build omits `key` (config treats an empty value as absent).
-- `WORKER_URL` in `lib/config.ts` becomes `import.meta.env.WXT_WORKER_URL ?? "https://drexel-rmp-worker.mlhv.workers.dev"`. Local Worker development sets `WXT_WORKER_URL=http://localhost:8787` in an untracked `.env.local`; the existing "use localhost" comment is updated to say so.
+- `WORKER_URL` in `lib/config.ts` becomes `import.meta.env.WXT_WORKER_URL ?? "https://drexel-rmp-worker.mlhv.workers.dev"`. Local Worker development sets `WXT_WORKER_URL=http://localhost:8787` in an untracked `.env.development.local` (not `.env.local`, which Vite loads in every mode, production included); the existing "use localhost" comment is updated to say so.
 - The replaced wildcard `https://*.workers.dev/*` is removed entirely.
+- `https://*.drexel.edu/*` is also dropped (amended after final review): content scripts get page access from their own `matches`, and the background never fetches Drexel.
 
 **Icons**
 - One original source image: `packages/extension/assets/icon.svg`. `@wxt-dev/auto-icons` generates 16/32/48/128 PNGs at build time.

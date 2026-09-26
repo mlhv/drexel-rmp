@@ -41,7 +41,7 @@ schedule and registration pages.
 
 **Permission justifications:**
 - `storage`: Caches rating lookups locally so the same professor isn't looked up again on every page load.
-- Host `https://*.drexel.edu/*`: Reads instructor names on Drexel's Term Master Schedule and Banner registration pages to place rating badges next to them.
+- Content-script sites `https://termmasterschedule.drexel.edu/webtms_du/*` and `https://banner.drexel.edu/registration/ssb/*`: Reads instructor names on Drexel's Term Master Schedule and Banner registration pages to place rating badges next to them.
 - Host `https://www.ratemyprofessors.com/*`: Fetches public professor ratings.
 - Host `https://drexel-rmp-worker.mlhv.workers.dev/*`: The extension's own cache service for professor ratings, which reduces requests to Rate My Professors.
 

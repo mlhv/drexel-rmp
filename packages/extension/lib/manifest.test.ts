@@ -1,8 +1,9 @@
 import { describe, expect, it } from "vitest";
 import { buildManifest } from "./manifest";
 
+// No Drexel host: content scripts get page access from their own `matches`,
+// and only the background fetches (RMP + Worker).
 const PROD_HOSTS = [
-  "https://*.drexel.edu/*",
   "https://www.ratemyprofessors.com/*",
   "https://drexel-rmp-worker.mlhv.workers.dev/*",
 ];

@@ -13,7 +13,7 @@ Dashboard text lives only in Google's web form, with no history and no review. K
 ## Concept 2: What reviewers actually check
 
 - **Single purpose:** MV3 policy says an extension must do one narrow thing. Ours does: "ratings next to instructor names on Drexel pages".
-- **Permission justifications:** one sentence per permission, saying *why this feature needs it*. Broad hosts (`<all_urls>`, `*.workers.dev`) trigger manual review and delays. That's why Task 14 made them exact.
+- **Permission justifications:** one sentence per permission, saying *why this feature needs it*. Broad hosts (`<all_urls>`, `*.workers.dev`, `*.drexel.edu`) trigger manual review and delays. Task 14 removed the `*.workers.dev` wildcard. The final review then caught that `*.drexel.edu` wasn't needed at all: content scripts get access to their pages through their own `matches` list, and only the background makes network requests, to RMP and the Worker. The lesson is that a permission is only justified by code that actually *uses* it.
 - **Remote code:** MV3 forbids running code that isn't in the package. Your Worker returns JSON, which is *data*, so the honest answer is "No". An extension that fetched and `eval`'d a script would be rejected.
 - **Data usage:** the instructor names the extension reads count as "website content". Declaring it, even though it's public data, is the honest and safe choice.
 

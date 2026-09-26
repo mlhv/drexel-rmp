@@ -22,8 +22,9 @@
   and Banner registration pages you visit. To look up ratings, those names are sent to:</p>
   <ul>
     <li>the extension's own rating cache service, hosted on Cloudflare Workers
-      (<code>drexel-rmp-worker.mlhv.workers.dev</code>), and</li>
-    <li>ratemyprofessors.com, when the cache service is unavailable or has no entry.</li>
+      (<code>drexel-rmp-worker.mlhv.workers.dev</code>), which looks up names it
+      hasn't cached yet on ratemyprofessors.com, and</li>
+    <li>ratemyprofessors.com directly, only when the cache service can't be reached.</li>
   </ul>
 
   <h2>What the extension does not collect</h2>

@@ -10,8 +10,9 @@ export const PROD_WORKER_URL = "https://drexel-rmp-worker.mlhv.workers.dev";
  */
 export const EXTENSION_PUBLIC_KEY = "";
 
+// No Drexel host: content scripts get page access from their own `matches`
+// (lib/sites.ts), and only the background fetches, to RMP and the Worker.
 const PROD_HOST_PERMISSIONS = [
-  "https://*.drexel.edu/*",
   "https://www.ratemyprofessors.com/*",
   `${PROD_WORKER_URL}/*`,
 ];

@@ -7,7 +7,8 @@ export function resolveWorkerUrl(override: string | undefined): string {
 
 /**
  * Worker base URL. For a local Worker, put `WXT_WORKER_URL=http://localhost:8787`
- * in packages/extension/.env.local (untracked) and run the dev build.
+ * in packages/extension/.env.development.local (untracked) and run the dev build.
+ * Not `.env.local`: Vite loads that in every mode, so it would leak into store builds.
  */
 export const WORKER_URL = resolveWorkerUrl(import.meta.env.WXT_WORKER_URL);
 export const WORKER_TIMEOUT_MS = 3000;

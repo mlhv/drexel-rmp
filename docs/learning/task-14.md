@@ -24,6 +24,8 @@ The production test uses `toEqual` on the **whole object**, not `toContain`. Tha
 
 `wxt.config.ts` is loaded by **Node** at build time, before Vite exists. `lib/config.ts` runs **inside the extension**, compiled by Vite, where `import.meta.env.WXT_*` is replaced with values from `.env` files. That's why `manifest.ts` must not touch `import.meta.env` or `wxt/browser`: it's imported by both. So the dependency points one way: `config.ts` imports `PROD_WORKER_URL` from `manifest.ts`, never the other way around.
 
+Which `.env` file matters too. Vite loads `.env` and `.env.local` in **every** mode, and `.env.[mode].local` only in that mode. The final review caught that the plan originally said `.env.local` for the localhost override. We proved it with a build: with `.env.local`, the production bundle contained `localhost:8787`; with `.env.development.local`, it didn't. That leak would have made the pre-release check silently skip the Worker (the production manifest has no localhost permission, so every lookup would fall back to RMP directly).
+
 ## Concept 3: Blank is not the same as set
 
 Two tests are about empty strings:
