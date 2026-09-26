@@ -5,3 +5,8 @@ compatibility_date = "2025-01-01"
 [[kv_namespaces]]
 binding = "RMP_CACHE"
 id = "2e1d7c3f7219480fadaa9a4d2cb31e92"
+
+[vars]
+# chrome-extension://<store item id>, set during docs/store/runbook.md bootstrap.
+# Empty = no browser origin allowed (safe: the extension doesn't depend on CORS).
+ALLOWED_ORIGIN = ""
