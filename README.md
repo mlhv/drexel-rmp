@@ -1,8 +1,10 @@
 # drexel-rmp
 
-Chrome extension showing Rate My Professors ratings inline on Drexel's
-Term Master Schedule and Banner registration pages, backed by a
-Cloudflare Worker KV cache with direct-to-RMP fallback.
+**DU ProfessorView** — Chrome extension showing Rate My Professors ratings inline on
+Drexel's Term Master Schedule and Banner registration pages, backed by a Cloudflare
+Worker KV cache with direct-to-RMP fallback.
+
+Not affiliated with or endorsed by Drexel University or Rate My Professors.
 
 ## Layout
 
