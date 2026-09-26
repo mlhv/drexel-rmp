@@ -18,6 +18,9 @@ Cloudflare Worker KV cache with direct-to-RMP fallback.
     pnpm -F @drexel-rmp/extension dev  # launches Chrome with the extension loaded
     pnpm -F @drexel-rmp/worker dev     # worker on http://localhost:8787
 
+To point a dev build at the local Worker, create `packages/extension/.env.local`
+containing `WXT_WORKER_URL=http://localhost:8787`.
+
 To use the extension day to day: `pnpm -F @drexel-rmp/extension build`, then
 chrome://extensions → Developer mode → Load unpacked →
 `packages/extension/.output/chrome-mv3`.

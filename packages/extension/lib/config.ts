@@ -1,8 +1,15 @@
+import { PROD_WORKER_URL } from "./manifest";
+
+/** An override (e.g. a local `wrangler dev` server) wins; blank means unset. */
+export function resolveWorkerUrl(override: string | undefined): string {
+  return override?.trim() || PROD_WORKER_URL;
+}
+
 /**
- * Deployed Cloudflare Worker base URL (see packages/worker/README.md).
- * Use "http://localhost:8787" while running `pnpm -F @drexel-rmp/worker dev`.
+ * Worker base URL. For a local Worker, put `WXT_WORKER_URL=http://localhost:8787`
+ * in packages/extension/.env.local (untracked) and run the dev build.
  */
-export const WORKER_URL = "https://drexel-rmp-worker.mlhv.workers.dev";
+export const WORKER_URL = resolveWorkerUrl(import.meta.env.WXT_WORKER_URL);
 export const WORKER_TIMEOUT_MS = 3000;
 /** Direct RMP is the last network layer; without a cap a hung request would block the lookup forever. */
 export const DIRECT_TIMEOUT_MS = 5000;

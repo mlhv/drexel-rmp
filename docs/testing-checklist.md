@@ -21,6 +21,6 @@ background console (Network tab shows Worker/RMP requests).
 - [ ] STAFF/TBD sections show no badge
 - [ ] Reload the page: badges reappear fast (local cache — service worker Network tab
       shows no Worker/RMP requests for repeated names)
-- [ ] Kill switch drill: set WORKER_URL in `lib/config.ts` to a garbage domain, rebuild → badges
-      still appear (direct RMP fallback). Restore WORKER_URL after.
+- [ ] Kill switch drill: `WXT_WORKER_URL=https://nonexistent.invalid pnpm -F @drexel-rmp/extension build`,
+      reload the extension → badges still appear (direct RMP fallback). Rebuild normally after.
 - [ ] No layout breakage or console errors injected into either Drexel page

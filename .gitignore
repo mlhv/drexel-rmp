@@ -6,3 +6,4 @@ dist/
 .dev.vars
 .superpowers/
 .DS_Store
+.env*.local
