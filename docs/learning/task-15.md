@@ -22,3 +22,7 @@ The icon avoids Drexel's navy and gold and the dragon, and anything resembling R
 ## Concept 3: Semantic versioning and the store
 
 The store requires every upload to have a **higher** `version` than the last one, and WXT copies it from `package.json`. `1.0.0` signals "first public release". From here: bug fix → `1.0.1`, new feature → `1.1.0`, breaking change → `2.0.0`. In Task 16, the release workflow refuses to build if the git tag and this version disagree.
+
+## Update: the dragon icon
+
+After launch prep, the icon was redesigned as an original chibi dragon in navy and gold (`assets/icon.svg`, one shape per line so diffs stay readable). School **colors** aren't the trademark risk; resembling the **official mark** is. So the dragon is deliberately cute and front-facing, nothing like Drexel's fierce profile logo. Because the SVG is the only source, the redesign was a one-file change: the build regenerated all four PNG sizes.

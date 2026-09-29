@@ -3,7 +3,7 @@
   --fg: #1f2937;
   --muted: #6b7280;
   --card: #f3f4f6;
-  --accent: #0f766e;
+  --accent: #0b2a4f;
   --good: #15803d;
 }
 @media (prefers-color-scheme: dark) {
@@ -12,7 +12,7 @@
     --fg: #e5e7eb;
     --muted: #9ca3af;
     --card: #1f2937;
-    --accent: #2dd4bf;
+    --accent: #ffc72c;
     --good: #4ade80;
   }
 }

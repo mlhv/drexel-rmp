@@ -49,7 +49,7 @@ Ship the finished extension to the Chrome Web Store as **DU ProfessorView**, fir
 
 **Icons**
 - One original source image: `packages/extension/assets/icon.svg`. `@wxt-dev/auto-icons` generates 16/32/48/128 PNGs at build time.
-- Design: simple original mark (e.g. lens over a star), neutral palette. No Drexel dragon, no Drexel blue/gold, nothing resembling RMP's branding. Replacing this one file rebrands the icon everywhere.
+- Design (updated 2026-09-29 by owner decision): an original chibi gold dragon on a navy tile. School colors are fine; it must never resemble Drexel's official dragon mark or RMP's branding. Replacing this one file rebrands the icon everywhere.
 
 **Manifest guard test**
 - A Vitest test resolves the production manifest config and asserts: exact `permissions`, exact `host_permissions`, no `key`, no `localhost`. Any permission change must update this test deliberately, and CI fails otherwise.
