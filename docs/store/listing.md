@@ -39,11 +39,21 @@ Not affiliated with or endorsed by Drexel University or Rate My Professors.
 Displays Rate My Professors ratings next to instructor names on Drexel's course
 schedule and registration pages.
 
-**Permission justifications:**
-- `storage`: Caches rating lookups locally so the same professor isn't looked up again on every page load.
-- Content-script sites `https://termmasterschedule.drexel.edu/webtms_du/*` and `https://banner.drexel.edu/registration/ssb/*`: Reads instructor names on Drexel's Term Master Schedule and Banner registration pages to place rating badges next to them.
-- Host `https://www.ratemyprofessors.com/*`: Fetches public professor ratings.
-- Host `https://drexel-rmp-worker.mlhv.workers.dev/*`: The extension's own cache service for professor ratings, which reduces requests to Rate My Professors.
+**Permission justifications** (plain text: the dashboard does not render Markdown; paste the blocks as-is):
+
+storage:
+```
+Caches professor rating lookups locally (in chrome.storage.local) so a professor already looked up is not requested again on every page load. Only instructor names and their public rating data are stored; no user data.
+```
+
+Host permission (covers `host_permissions` and the `content_scripts` matches):
+```
+termmasterschedule.drexel.edu/webtms_du/* and banner.drexel.edu/registration/ssb/* (content scripts): the extension reads instructor names on Drexel's Term Master Schedule and Banner class registration pages and places a rating badge next to each name. It runs only on these two course listing paths.
+
+www.ratemyprofessors.com: the background service worker queries Rate My Professors for a professor's public rating by name. Content scripts cannot make these cross-origin requests themselves.
+
+drexel-rmp-worker.mlhv.workers.dev: the extension's own cache service, which stores public name-to-rating results so repeat lookups don't hit Rate My Professors. It receives only instructor names and returns JSON data, never code.
+```
 
 **Remote code:** No, I am not using remote code. (The cache service returns JSON data only; all executable code ships in the package.)
 
