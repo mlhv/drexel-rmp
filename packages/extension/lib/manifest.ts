@@ -8,7 +8,7 @@ export const PROD_WORKER_URL = "https://drexel-rmp-worker.mlhv.workers.dev";
  * base64 body only). Dev builds embed it so unpacked installs share the store ID.
  * Empty until the runbook's bootstrap step (docs/store/runbook.md).
  */
-export const EXTENSION_PUBLIC_KEY = "";
+export const EXTENSION_PUBLIC_KEY = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApE/uxpnjyqG+sb2anOgrx8yUNp0UUTPC71+GdmlVKmD1BkbbvzGDEc/9Fu08iTuOBf72/krO9jEsat7+GH742ERwRNfM2P0D3CGkGFxDeHLfRayDV9ihsJkvst5Pr4MErg+m1cG+g58y4IHb6KomfUKUB0TsIB8fb+dsu/w+MQ8oIWMemcuxOpDxKzojBIw5Z+9uY3virUAd65OtkYUDSGbHAiQErdw2nMIlFp13F9ZC+gd9f+BSUYvVMMKsw3yzg9kVeXmzsPZZdk98VvSOE7e96pFXqW67JDRIaJ0mt4RK7jyhSDjzRJFOBBE6szryRzrLdvjeFpAOAh0kXDktfwIDAQAB";
 
 // No Drexel host: content scripts get page access from their own `matches`
 // (lib/sites.ts), and only the background fetches, to RMP and the Worker.
