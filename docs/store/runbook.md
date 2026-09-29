@@ -21,7 +21,11 @@ The store assigns the ID on first upload. Dev builds and the Worker CORS allowli
 - [ ] Remove that unpacked dev copy (two installs with one ID conflict).
 
 ## 3. Pre-release check
-- [ ] Run `docs/testing-checklist.md` against the unpacked **production** build.
+The step 2 dev copy only proved the ID; this step tests the build you will actually ship.
+- [ ] `pnpm -F @drexel-rmp/extension build`, then chrome://extensions → Load unpacked → `packages/extension/.output/chrome-mv3` (note: no `-dev`).
+      Its ID will differ from the store ID. That's expected: the production manifest has no `key`, and the extension's own requests don't depend on the ID.
+- [ ] Run `docs/testing-checklist.md` against it.
+- [ ] Remove this unpacked copy when done (before installing from the store later).
 
 ## 4. Release and submit
 - [ ] Confirm `packages/extension/package.json` version is `1.0.0`.
