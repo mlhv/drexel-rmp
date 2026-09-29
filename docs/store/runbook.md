@@ -16,7 +16,7 @@ The store assigns the ID on first upload. Dev builds and the Worker CORS allowli
 - [ ] Paste the key into `EXTENSION_PUBLIC_KEY` in `packages/extension/lib/manifest.ts`.
 - [ ] Set `ALLOWED_ORIGIN = "chrome-extension://<item id>"` in `packages/worker/wrangler.toml`.
 - [ ] `pnpm test`, then commit: `chore: record Chrome Web Store extension ID`.
-- [ ] `pnpm -F @drexel-rmp/worker deploy`.
+- [ ] `pnpm -F @drexel-rmp/worker run deploy`.
 - [ ] `pnpm -F @drexel-rmp/extension exec wxt build --mode development`, load `packages/extension/.output/chrome-mv3-dev` unpacked, and confirm chrome://extensions shows the same ID as the store item.
 - [ ] Remove that unpacked dev copy (two installs with one ID conflict).
 

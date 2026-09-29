@@ -6,4 +6,4 @@ Cache proxy for RMP lookups. Deployed at:
 
 - `GET /prof?name=<first last>` → `LookupResult` JSON (see @drexel-rmp/shared)
 - KV: `RMP_CACHE` (id `2e1d7c3f7219480fadaa9a4d2cb31e92`), keys `prof:<lowercased name>`, TTL 7d found / 1d not_found
-- Deploy: `pnpm -F @drexel-rmp/worker deploy` (requires `wrangler login`)
+- Deploy: `pnpm -F @drexel-rmp/worker run deploy` (requires `wrangler login`)
