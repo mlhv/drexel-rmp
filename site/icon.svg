@@ -1,23 +1,33 @@
 <!-- DU ProfessorView icon: original chibi dragon (not Drexel's official dragon mark). Source for all icon sizes. -->
+<!-- Chrome Web Store icon rules: 96x96 artwork centred in 128x128 with 16px transparent padding,
+     plus a faint white glow so the navy tile still reads on dark backgrounds. -->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
-  <rect width="128" height="128" rx="28" fill="#0B2A4F"/>
-  <path d="M30 58 L8 36 L14 58 L4 62 L28 74 Z" fill="#E0A800" stroke="#0B2A4F" stroke-width="2.5" stroke-linejoin="round"/>
-  <path d="M98 58 L120 36 L114 58 L124 62 L100 74 Z" fill="#E0A800" stroke="#0B2A4F" stroke-width="2.5" stroke-linejoin="round"/>
-  <path d="M40 46 Q26 34 18 20 Q38 26 52 38 Z" fill="#FFE08A" stroke="#0B2A4F" stroke-width="2.5" stroke-linejoin="round"/>
-  <path d="M88 46 Q102 34 110 20 Q90 26 76 38 Z" fill="#FFE08A" stroke="#0B2A4F" stroke-width="2.5" stroke-linejoin="round"/>
-  <path d="M56 36 L60 24 L64 34 L68 24 L72 36 Z" fill="#FFE08A" stroke="#0B2A4F" stroke-width="2.5" stroke-linejoin="round"/>
-  <ellipse cx="64" cy="68" rx="38" ry="33" fill="#FFC72C" stroke="#0B2A4F" stroke-width="3"/>
-  <ellipse cx="64" cy="88" rx="17" ry="10" fill="#FFE08A" stroke="#0B2A4F" stroke-width="2.5"/>
-  <ellipse cx="59" cy="85" rx="1.8" ry="1.4" fill="#0B2A4F"/>
-  <ellipse cx="69" cy="85" rx="1.8" ry="1.4" fill="#0B2A4F"/>
-  <path d="M54 94 Q64 101 74 94" fill="none" stroke="#0B2A4F" stroke-width="3" stroke-linecap="round"/>
-  <path d="M67 96.5 L69.5 102 L72 95.2 Z" fill="#FFFFFF" stroke="#0B2A4F" stroke-width="1.5" stroke-linejoin="round"/>
-  <circle cx="36" cy="80" r="5" fill="#FF8A80" opacity="0.55"/>
-  <circle cx="92" cy="80" r="5" fill="#FF8A80" opacity="0.55"/>
-  <circle cx="48" cy="64" r="11" fill="#FFFFFF" stroke="#0B2A4F" stroke-width="2.5"/>
-  <circle cx="80" cy="64" r="11" fill="#FFFFFF" stroke="#0B2A4F" stroke-width="2.5"/>
-  <circle cx="50" cy="65" r="6.5" fill="#0B2A4F"/>
-  <circle cx="82" cy="65" r="6.5" fill="#0B2A4F"/>
-  <circle cx="52.5" cy="62" r="2.4" fill="#FFFFFF"/>
-  <circle cx="84.5" cy="62" r="2.4" fill="#FFFFFF"/>
+  <defs>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+  </defs>
+  <rect x="16" y="16" width="96" height="96" rx="21" fill="#FFFFFF" opacity="0.35" filter="url(#glow)"/>
+  <g transform="translate(16 16) scale(0.75)">
+    <rect width="128" height="128" rx="28" fill="#0B2A4F"/>
+    <path d="M30 58 L8 36 L14 58 L4 62 L28 74 Z" fill="#E0A800" stroke="#0B2A4F" stroke-width="2.5" stroke-linejoin="round"/>
+    <path d="M98 58 L120 36 L114 58 L124 62 L100 74 Z" fill="#E0A800" stroke="#0B2A4F" stroke-width="2.5" stroke-linejoin="round"/>
+    <path d="M40 46 Q26 34 18 20 Q38 26 52 38 Z" fill="#FFE08A" stroke="#0B2A4F" stroke-width="2.5" stroke-linejoin="round"/>
+    <path d="M88 46 Q102 34 110 20 Q90 26 76 38 Z" fill="#FFE08A" stroke="#0B2A4F" stroke-width="2.5" stroke-linejoin="round"/>
+    <path d="M56 36 L60 24 L64 34 L68 24 L72 36 Z" fill="#FFE08A" stroke="#0B2A4F" stroke-width="2.5" stroke-linejoin="round"/>
+    <ellipse cx="64" cy="68" rx="38" ry="33" fill="#FFC72C" stroke="#0B2A4F" stroke-width="3"/>
+    <ellipse cx="64" cy="88" rx="17" ry="10" fill="#FFE08A" stroke="#0B2A4F" stroke-width="2.5"/>
+    <ellipse cx="59" cy="85" rx="1.8" ry="1.4" fill="#0B2A4F"/>
+    <ellipse cx="69" cy="85" rx="1.8" ry="1.4" fill="#0B2A4F"/>
+    <path d="M54 94 Q64 101 74 94" fill="none" stroke="#0B2A4F" stroke-width="3" stroke-linecap="round"/>
+    <path d="M67 96.5 L69.5 102 L72 95.2 Z" fill="#FFFFFF" stroke="#0B2A4F" stroke-width="1.5" stroke-linejoin="round"/>
+    <circle cx="36" cy="80" r="5" fill="#FF8A80" opacity="0.55"/>
+    <circle cx="92" cy="80" r="5" fill="#FF8A80" opacity="0.55"/>
+    <circle cx="48" cy="64" r="11" fill="#FFFFFF" stroke="#0B2A4F" stroke-width="2.5"/>
+    <circle cx="80" cy="64" r="11" fill="#FFFFFF" stroke="#0B2A4F" stroke-width="2.5"/>
+    <circle cx="50" cy="65" r="6.5" fill="#0B2A4F"/>
+    <circle cx="82" cy="65" r="6.5" fill="#0B2A4F"/>
+    <circle cx="52.5" cy="62" r="2.4" fill="#FFFFFF"/>
+    <circle cx="84.5" cy="62" r="2.4" fill="#FFFFFF"/>
+  </g>
 </svg>

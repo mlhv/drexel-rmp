@@ -73,6 +73,6 @@ drexel-rmp-worker.mlhv.workers.dev: the extension's own cache service, which sto
 
 ## Assets
 
-- Store icon: 128×128 — `packages/extension/.output/chrome-mv3/icons/128.png` after a production build
+- Store icon: 128×128 (96px art + 16px transparent padding) — `docs/store/store-icon-128.png`. It is a copy of the build's `icons/128.png`; `.output/` is hidden in macOS file pickers. Re-copy it after any icon change.
 - Screenshots: ≥1 at 1280×800, captured by you from logged-in TMS/Banner pages; crop out your name, schedule, and anything personal
 - Small promo tile 440×280: only if the dashboard requires it — the icon centered on a `#0B2A4F` (navy) background
